@@ -1,0 +1,12 @@
+[Compute]
+#Server 2
+192.168.56.113
+
+[Identity]
+#Server 2
+192.168.56.113
+
+[Imaging]
+#Server 2
+192.168.56.113
+

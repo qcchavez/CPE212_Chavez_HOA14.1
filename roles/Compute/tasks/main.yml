@@ -1,0 +1,28 @@
+---
+- name: Install Nova controller packages
+  apt:
+    name:
+      - nova-api
+      - nova-scheduler
+      - nova-conductor
+      - python3-novaclient
+    state: present
+
+- name: Configure Nova on controller
+  template:
+    src: nova.conf.j2
+    dest: /etc/nova/nova.conf
+    owner: nova
+    group: nova
+    mode: 0644
+
+- name: Restart Nova services
+  service:
+    name: "{{ item }}"
+    state: restarted
+  loop:
+    - nova-api
+    - nova-scheduler
+    - nova-conductor
+
+
